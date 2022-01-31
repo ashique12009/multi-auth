@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::get('settings', [AdminController::class, 'settings'])->name('admin.settings');
+});
+
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
+    Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+});

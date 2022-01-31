@@ -12,3 +12,5 @@ Laravel gaurd can give you a good facility to maintain multiauth where you might
 ## Affected files
 
 routes\web.php
+database\migrations\2022_01_30_142617_add_role_column_to_users_table.php
+app\Models\User.php

@@ -13,8 +13,8 @@ class AddRoleColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('user', function (Blueprint $table) {
-            $table->string('role')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('role')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ class AddRoleColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('user', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role');
         });
     }
